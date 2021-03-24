@@ -24,5 +24,30 @@ module.exports = function override(config, env) {
     new webpack.DefinePlugin({ __DEV__: env !== 'production' }),
   )
 
+  config.devtool = 'eval-source-map';
+
+  config.module.rules.push({
+    test: /\.js$/,
+    use: {
+      loader: 'babel-loader',
+      options: {
+        // Disable reading babel configuration
+        babelrc: false,
+        configFile: false,
+
+        // The configration for compilation
+        presets: [
+          '@babel/preset-env',
+          '@babel/preset-react',
+          '@babel/preset-flow'
+        ],
+        plugins: [
+          '@babel/plugin-proposal-class-properties',
+          '@babel/plugin-proposal-object-rest-spread'
+        ]
+      }
+    }
+  })
+
   return config
 }
