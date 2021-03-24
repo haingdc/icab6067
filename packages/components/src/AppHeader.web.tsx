@@ -4,7 +4,7 @@ import { StyleSheet, Text, View } from 'react-native'
 export function AppHeader() {
   return (
     <View style={styles.container}>
-      <Text style={styles.text}>Welcome to React Native Web + Monorepo</Text>
+      <Text style={styles.text}> </Text>
     </View>
   )
 }
@@ -14,7 +14,6 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     width: '100%',
-    height: 200,
     backgroundColor: '#f3f3f3',
   },
   text: {

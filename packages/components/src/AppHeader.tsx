@@ -1,3 +1,8 @@
-import { Header as AppHeader } from 'react-native/Libraries/NewAppScreen'
+import React from 'react';
+import { Text } from 'react-native';
 
-export { AppHeader }
+export function AppHeader() {
+  return (
+      <Text>Header mobile</Text>
+  );
+}

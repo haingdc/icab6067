@@ -9,6 +9,7 @@ import {
 } from 'react-native'
 import { Route, Router, Switch, Link, Test } from './Router';
 import { AppHeader } from './AppHeader'
+import { Login } from './pages/sign-in';
 
 
 export function App() {
@@ -69,12 +70,6 @@ export function App() {
 function Home() {
   return (
     <Text>Home</Text>
-  );
-}
-
-function Login() {
-  return (
-    <Text>Login</Text>
   );
 }
 
