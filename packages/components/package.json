@@ -10,5 +10,12 @@
     "@types/react-native": "*",
     "react": "*",
     "react-native": "*"
+  },
+  "dependencies": {
+    "@userfront/react": "^0.1.23",
+    "react-router-dom": "^5.2.0"
+  },
+  "devDependencies": {
+    "@types/react-router-dom": "^5.1.7"
   }
 }
