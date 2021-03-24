@@ -7,8 +7,9 @@ import {
   Text,
   View,
 } from 'react-native'
-
+import { Route, Router, Switch, Link, Test } from './Router';
 import { AppHeader } from './AppHeader'
+
 
 export function App() {
   return (
@@ -25,43 +26,66 @@ export function App() {
               <Text style={styles.footer}>Engine: Hermes</Text>
             </View>
           )}
-          <View style={styles.body}>
-            <View style={styles.sectionContainer}>
-              <Text style={styles.sectionTitle}>
-                Code sharing using Monorepo
-              </Text>
-              <Text style={styles.sectionDescription}>
-                Edit{' '}
-                <Text style={styles.highlight}>
-                  packages/components/App.tsx
-                </Text>{' '}
-                to change this screen and then come back to see your edits (in
-                the phone or the browser).
-              </Text>
+          <Router>
+            <View>
+              <Text>App</Text>
+              <Test />
+                <View>
+                  <Link to="/">
+                    <Text>Home</Text>
+                  </Link>
+                  <Link to="/login">
+                    <Text>Login</Text></Link>
+                  <Link to="/reset">
+                    <Text>Reset</Text>
+                  </Link>
+                  <Link to="/dashboard">
+                    <Text>Dashboard</Text>
+                  </Link>
+                </View>
+
+              <Switch>
+                <Route path="/login">
+                  <Login />
+                </Route>
+                <Route path="/reset">
+                  <PasswordReset />
+                </Route>
+                <Route path="/dashboard">
+                  <Dashboard />
+                </Route>
+                <Route path="/">
+                  <Home />
+                </Route>
+              </Switch>
             </View>
-            <View style={styles.sectionContainer}>
-              <Text style={styles.sectionTitle}>
-                Web support via react-native-web
-              </Text>
-              <Text style={styles.sectionDescription}>
-                Run{' '}
-                <Text style={styles.highlight}>yarn workspace web start</Text>{' '}
-                to open this app in the browser.
-              </Text>
-              <Text style={styles.sectionDescription}>
-                It will share the same code from mobile, unless you create
-                platform-specific files using the{' '}
-                <Text style={styles.highlight}>.web.tsx</Text> extension (also
-                supports <Text style={styles.highlight}>.android</Text>,{' '}
-                <Text style={styles.highlight}>.ios</Text>,{' '}
-                <Text style={styles.highlight}>.native</Text>, etc).
-              </Text>
-            </View>
-          </View>
+          </Router>
         </ScrollView>
       </SafeAreaView>
     </>
   )
+}
+
+function Home() {
+  return (
+    <Text>Home</Text>
+  );
+}
+
+function Login() {
+  return (
+    <Text>Login</Text>
+  );
+}
+
+function PasswordReset() {
+  return (
+    <Text>Password Reset</Text>
+  );
+}
+
+function Dashboard() {
+  return <Text>Dashboard</Text>;
 }
 
 const styles = StyleSheet.create({

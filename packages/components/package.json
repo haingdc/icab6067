@@ -13,9 +13,11 @@
   },
   "dependencies": {
     "@userfront/react": "^0.1.23",
-    "react-router-dom": "^5.2.0"
+    "react-router-dom": "^5.2.0",
+    "react-router-native": "^5.2.0"
   },
   "devDependencies": {
-    "@types/react-router-dom": "^5.1.7"
+    "@types/react-router-dom": "^5.1.7",
+    "@types/react-router-native": "^5.1.0"
   }
 }
