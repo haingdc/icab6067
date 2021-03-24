@@ -27,7 +27,7 @@ export function Login() {
       />
       <InputApp
         type="password"
-        value={data.mail}
+        value={data.pass}
         placeholder="Password"
         onChangeText={text => {
           setData(v => ({
