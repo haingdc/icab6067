@@ -11,7 +11,7 @@ function InputBase(props: {
   imageStyle: { width: number; height: number };
   value: string;
   placeholder?: string;
-  type: 'password' | 'username' | 'emailAddress';
+  type: 'password' | 'username' | 'emailAddress' | 'telephoneNumber';
   onChangeText: ((text: string) => void) | undefined;
 }) {
   const { style, source, type, imageStyle, value, placeholder, onChangeText } = props
@@ -42,9 +42,10 @@ const styles = StyleSheet.create({
 });
 
 const photoLookup: Record<string, [any, number, number]> = {
-  password    : [pic_lock , 12, 13],
-  username    : [pic_human, 12, 13],
-  emailAddress: [pic_mail , 17, 13],
+  password        : [pic_lock  , 12, 13],
+  username        : [pic_human , 12, 13],
+  emailAddress    : [pic_mail  , 17, 13],
+  telephoneNumber : [pic_phone , 13, 13],
 };
 
 export function InputApp(props: PropType) {
@@ -65,7 +66,7 @@ export function InputApp(props: PropType) {
 
 interface PropType {
   style?      : StyleProp<ViewStyle>;
-  type        : 'password' | 'username' | 'emailAddress';
+  type        : 'password' | 'username' | 'emailAddress' | 'telephoneNumber';
   value       : string;
   placeholder?: string;
   onChangeText: ((text: string) => void) | undefined;
