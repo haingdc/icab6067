@@ -11,6 +11,7 @@ import { Route, Router, Switch, Link, Test } from './Router';
 import { AppHeader } from './AppHeader'
 import { SignIn } from './pages/sign-in';
 import { SignUp } from './pages/sign-up';
+import { Dashboard } from './pages/dashboard';
 
 
 export function App() {
@@ -86,9 +87,7 @@ function PasswordReset() {
   );
 }
 
-function Dashboard() {
-  return <Text>Dashboard</Text>;
-}
+
 
 const styles = StyleSheet.create({
   scrollView: {
