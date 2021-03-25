@@ -1,52 +1,65 @@
 import React, { useState } from 'react';
 import { View, Text, StyleSheet, Image, TouchableOpacity } from 'react-native';
-import greenCar from '../../../assets/green-car.png';
+import redCar from '../../../assets/red-car.png';
 import { InputApp } from '../../components/input';
 import { Link } from '../../Router';
 
-export function SignIn() {
+export function SignUp() {
   const [data, setData] = useState({
-    mail: '',
-    pass: '',
-  })
+    name : '',
+    phone: '',
+    mail : '',
+    pass : '',
+  });
+  function handleChange(field: string) {
+    return function onChange(text) {
+      setData(v => ({
+        ...v,
+        [field]: text
+      }));
+    }
+  }
   return (
     <View style={styles.container} nativeID="todo">
-      <Image source={greenCar as any} style={styles.img} />
-      <Text style={[styles.text1, styles.welcome]}>Welcome Back!</Text>
-      <Text style={[styles.text2, styles.desc]}>Login to continue using iCab</Text>
+      <Image source={redCar as any} style={styles.img} />
+      <Text style={[styles.text1, styles.welcome]}>Welcome Aboard!</Text>
+      <Text style={[styles.text2, styles.desc]}>Signup with iCab in simple steps</Text>
+      <InputApp
+        type="username"
+        value={data.name}
+        placeholder="Name"
+        onChangeText={handleChange('name')}
+        style={styles.name}
+      />
+      <InputApp
+        type="telephoneNumber"
+        value={data.phone}
+        placeholder="Phone Number"
+        onChangeText={handleChange('phone')}
+        style={styles.phone}
+      />
       <InputApp
         type="emailAddress"
         value={data.mail}
         placeholder="Email"
-        onChangeText={text => {
-          setData(v => ({
-            ...v,
-            mail: text,
-          }))
-        }}
-        style={styles.mail}
+        onChangeText={handleChange('mail')}
+        style={styles.phone}
       />
       <InputApp
         type="password"
         value={data.pass}
         placeholder="Password"
-        onChangeText={text => {
-          setData(v => ({
-            ...v,
-            pass: text,
-          }))
-        }}
-        style={styles.pass}
+        onChangeText={handleChange('pass')}
+        style={styles.phone}
       />
-      <Text style={[ styles.text2, styles.forgot]}>Forgot password?</Text>
       <TouchableOpacity style={{ borderRadius: 6, overflow: 'hidden', marginTop: 33 }} onPress={() => {}}>
-        <Text style={styles.submit}>Login</Text>
+        <Text style={styles.submit}>Signup</Text>
       </TouchableOpacity>
       <Text style={[styles.text2, styles.bottomText]}>
-        New User?
-        <Link to="/signup">
+        Already a User?
+        <Link to="/signin">
           <Text style={styles.signup}>
-            Sign up for a new acccount
+            Login now
           </Text>
         </Link>
       </Text>
@@ -61,8 +74,8 @@ const styles = StyleSheet.create({
     alignSelf: 'center'  ,
   },
   img: {
-    width: 195,
-    height: 80,
+    width: 192,
+    height: 60,
     alignSelf: 'center',
   },
   text1: {
@@ -81,15 +94,14 @@ const styles = StyleSheet.create({
     marginTop: 14,
     alignSelf: 'center',
   },
-  mail: {
+  name: {
     marginTop: 148,
+  },
+  phone: {
+    marginTop: 20,
   },
   pass: {
     marginTop: 20,
-  },
-  forgot: {
-    marginTop: 20,
-    alignSelf: 'flex-end',
   },
   submit: {
     backgroundColor: '#3277D8',

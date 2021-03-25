@@ -9,7 +9,8 @@ import {
 } from 'react-native'
 import { Route, Router, Switch, Link, Test } from './Router';
 import { AppHeader } from './AppHeader'
-import { Login } from './pages/sign-in';
+import { SignIn } from './pages/sign-in';
+import { SignUp } from './pages/sign-up';
 
 
 export function App() {
@@ -35,8 +36,11 @@ export function App() {
                   <Link to="/">
                     <Text>Home</Text>
                   </Link>
-                  <Link to="/login">
+                  <Link to="/signin">
                     <Text>Login</Text></Link>
+                  <Link to="/signup">
+                    <Text>Sign up</Text>
+                  </Link>
                   <Link to="/reset">
                     <Text>Reset</Text>
                   </Link>
@@ -46,8 +50,11 @@ export function App() {
                 </View>
 
               <Switch>
-                <Route path="/login">
-                  <Login />
+                <Route path="/signin">
+                  <SignIn />
+                </Route>
+                <Route path="/signup">
+                  <SignUp />
                 </Route>
                 <Route path="/reset">
                   <PasswordReset />
