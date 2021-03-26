@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { View, Text, StyleSheet } from 'react-native';
-import MapView from 'react-native-maps';
+import MapView, { Marker } from 'react-native-maps';
 
 export function Dashboard() {
   const [region, setRegion] = useState({
@@ -20,7 +20,9 @@ export function Dashboard() {
         style={ styles.map }
         region={region}
         onRegionChange={onRegionChange}
-      />
+      >
+          <Marker coordinate={{ latitude: 0.0922, longitude: 0.0421 }} />
+      </MapView>
     </View>
   );
 }
