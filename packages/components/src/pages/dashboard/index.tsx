@@ -6,13 +6,15 @@ import { InputLocation } from '../../components/input-location';
 const Marker2 = (MapView as any).Marker;
 console.log({ MapView, Marker })
 
+const initialRegion = {
+  latitude: 37.78825,
+  longitude: -122.4324,
+  latitudeDelta: 0.0922,
+  longitudeDelta: 0.0421,
+};
+
 export function Dashboard() {
-  const [region, setRegion] = useState({
-    latitude: 37.78825,
-      longitude: -122.4324,
-      latitudeDelta: 0.0922,
-      longitudeDelta: 0.0421,
-  });
+  const [region, setRegion] = useState(initialRegion);
   const [marker, setMarker] = useState({
     latitude: 37.78825, longitude: -122.4324,
   });
@@ -27,6 +29,7 @@ export function Dashboard() {
         style={ styles.map }
         region={region}
         onRegionChange={onRegionChange}
+        initialRegion={initialRegion}
       >
         <Marker2 draggable coordinate={marker} onDragEnd={e => {
           setMarker(e.nativeEvent.coordinate )
