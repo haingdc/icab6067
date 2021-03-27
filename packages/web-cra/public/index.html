@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    <meta http-equiv="Content-Security-Policy" content="
+	default-src 'self' data: gap: tel: https://maps.googleapis.com https://maps.gstatic.com https://app-measurement.com 'unsafe-eval' 'unsafe-inline';
+	 style-src 'self' 'unsafe-inline'">
     <meta charset="utf-8" />
     <link rel="shortcut icon" href="%PUBLIC_URL%/favicon.ico" />
     <meta
@@ -38,5 +41,6 @@
       To begin the development, run `npm start` or `yarn start`.
       To create a production bundle, use `npm run build` or `yarn build`.
     -->
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA_lsmHKQ5FTBzSHFlJXWqqSQxHfuvM8Lc"></script>
   </body>
 </html>

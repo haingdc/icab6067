@@ -1,7 +1,10 @@
 import React, { useState } from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { View, StyleSheet } from 'react-native';
 import MapView, { Marker } from 'react-native-maps';
 import { InputLocation } from '../../components/input-location';
+
+const Marker2 = (MapView as any).Marker;
+console.log({ MapView, Marker })
 
 export function Dashboard() {
   const [region, setRegion] = useState({
@@ -25,7 +28,9 @@ export function Dashboard() {
         region={region}
         onRegionChange={onRegionChange}
       >
-        <Marker draggable coordinate={marker} onDragEnd={e => setMarker(e.nativeEvent.coordinate )} />
+        <Marker2 draggable coordinate={marker} onDragEnd={e => {
+          setMarker(e.nativeEvent.coordinate )
+        }} />
       </MapView>
       <InputLocation type="location1" value="16th Avenue, 4th Cross Street, Chennai" onChangeText={() => {}} style={styles.locate} />
       <InputLocation
