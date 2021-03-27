@@ -9,6 +9,9 @@ export function Dashboard() {
       latitudeDelta: 0.0922,
       longitudeDelta: 0.0421,
   });
+  const [marker, setMarker] = useState({
+    latitude: 37.78825, longitude: -122.4324,
+  });
   function onRegionChange(region) {
     setRegion(region)
   }
@@ -21,7 +24,7 @@ export function Dashboard() {
         region={region}
         onRegionChange={onRegionChange}
       >
-          <Marker coordinate={{ latitude: 0.0922, longitude: 0.0421 }} />
+        <Marker draggable coordinate={marker} onDragEnd={e => setMarker(e.nativeEvent.coordinate )} />
       </MapView>
     </View>
   );
