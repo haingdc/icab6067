@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 import MapView, { Marker } from 'react-native-maps';
+import { InputLocation } from '../../components/input-location';
 
 export function Dashboard() {
   const [region, setRegion] = useState({
@@ -17,7 +18,7 @@ export function Dashboard() {
   }
   return (
     <View
-      style={{ minHeight: 400 }}
+      style={{ minHeight: 580, borderColor: 'red', borderWidth: 1, position: 'relative' }}
     >
       <MapView
         style={ styles.map }
@@ -26,6 +27,13 @@ export function Dashboard() {
       >
         <Marker draggable coordinate={marker} onDragEnd={e => setMarker(e.nativeEvent.coordinate )} />
       </MapView>
+      <InputLocation type="location1" value="16th Avenue, 4th Cross Street, Chennai" onChangeText={() => {}} style={styles.locate} />
+      <InputLocation
+        type="location2"
+        value="Destination Please. ?"
+        onChangeText={() => {}}
+        style={styles.destination}
+      />
     </View>
   );
 }
@@ -33,12 +41,24 @@ export function Dashboard() {
 const styles = StyleSheet.create({
   container: {
     ...StyleSheet.absoluteFillObject,
-    height: 600,
+    height: '100%',
     width: '100%',
     justifyContent: 'flex-end',
     alignItems: 'center',
   },
   map: {
     ...StyleSheet.absoluteFillObject,
+  },
+  locate: {
+    position: 'absolute',
+    top: 20,
+    minWidth: 335,
+    alignSelf: 'center',
+  },
+  destination: {
+    position: 'absolute',
+    bottom: 20,
+    minWidth: 335,
+    alignSelf: 'center',
   },
  });

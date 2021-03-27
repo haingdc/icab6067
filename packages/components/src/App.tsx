@@ -64,7 +64,7 @@ export function App() {
                   <Dashboard />
                 </Route>
                 <Route path="/">
-                  <Home />
+                  <Dashboard />
                 </Route>
               </Switch>
             </View>
