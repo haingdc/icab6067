@@ -3,6 +3,7 @@ import { View, Image, TextInput , ImageSourcePropType, ViewStyle, StyleProp, Sty
 import pic_compass from '../../../assets/compass.png';
 import pic_locate  from '../../../assets/locate.png';
 import pic_line    from '../../../assets/line.png';
+import pic_x       from '../../../assets/x.png';
 
 function InputBase(props: {
   style?: StyleProp<ViewStyle>;
@@ -98,59 +99,20 @@ export function NewLocation(props) {
         <View style={[newStyles.cell1, newStyles.cellIcon ]}>
           <Image source={pic_compass as any} style={[newStyles.sign, { width: 12, height: 12 } ]} />
         </View>
-        {/* <View style={{ paddingVertical: 0.5 }}>
-          <Image source={pic_line as any} style={[newStyles.sign, { width: 1, height: 29 } ]} />
-        </View>
-        <View style={[newStyles.cell1, newStyles.cellIcon ]}>
-          <Image source={pic_compass as any} style={[newStyles.sign, { width: 12, height: 12 } ]} />
-        </View>
-        <View style={{ paddingVertical: 0.5 }}>
-          <Image source={pic_line as any} style={[newStyles.sign, { width: 1, height: 29 } ]} />
-        </View>
-        <View style={[newStyles.cell1, newStyles.cellIcon ]}>
-          <Image source={pic_compass as any} style={[newStyles.sign, { width: 12, height: 12 } ]} />
-        </View>
-        <View style={{ paddingVertical: 0.5 }}>
-          <Image source={pic_line as any} style={[newStyles.sign, { width: 1, height: 29 } ]} />
-        </View>
-        <View style={[newStyles.cell1, newStyles.cellIcon ]}>
-          <Image source={pic_compass as any} style={[newStyles.sign, { width: 12, height: 12 } ]} />
-        </View>
-        <View style={{ paddingVertical: 0.5 }}>
-          <Image source={pic_line as any} style={[newStyles.sign, { width: 1, height: 29 } ]} />
-        </View>
-        <View style={[newStyles.cell1, newStyles.cellIcon ]}>
-          <Image source={pic_compass as any} style={[newStyles.sign, { width: 12, height: 12 } ]} />
-        </View>
-        <View style={{ paddingVertical: 0.5 }}>
-          <Image source={pic_line as any} style={[newStyles.sign, { width: 1, height: 29 } ]} />
-        </View>
-        <View style={[newStyles.cell1, newStyles.cellIcon ]}>
-          <Image source={pic_compass as any} style={[newStyles.sign, { width: 12, height: 12 } ]} />
-        </View> */}
       </View>
       <View style={newStyles.col2}>
         <View style={[ newStyles.cellInput, { marginTop: 0} ]}>
           <TextInput style={newStyles.input} value="16th Avenue, 4th Cross Street, Chennai" />
+          <View style={newStyles.closeWrapper}>
+            <Image source={pic_x as any} style={newStyles.close} />
+          </View>
         </View>
         <View style={[ newStyles.cellInput ]}>
           <TextInput style={newStyles.input} value="16th Avenue, 4th Cross Street, Chennai" />
+          <View style={newStyles.closeWrapper}>
+            <Image source={pic_x as any} style={newStyles.close} />
+          </View>
         </View>
-        {/* <View style={[ newStyles.cellInput ]}>
-          <TextInput style={newStyles.input} value="16th Avenue, 4th Cross Street, Chennai" />
-        </View>
-        <View style={[ newStyles.cellInput ]}>
-          <TextInput style={newStyles.input} value="16th Avenue, 4th Cross Street, Chennai" />
-        </View>
-        <View style={[ newStyles.cellInput ]}>
-          <TextInput style={newStyles.input} value="16th Avenue, 4th Cross Street, Chennai" />
-        </View>
-        <View style={[ newStyles.cellInput ]}>
-          <TextInput style={newStyles.input} value="16th Avenue, 4th Cross Street, Chennai" />
-        </View>
-        <View style={[ newStyles.cellInput ]}>
-          <TextInput style={newStyles.input} value="16th Avenue, 4th Cross Street, Chennai" />
-        </View> */}
       </View>
     </View>
   );
@@ -187,7 +149,6 @@ const newStyles = StyleSheet.create({
     ...debug('purple'),
     flex: 1,
     paddingTop: 11,
-    paddingBottom: 5,
   },
   sign: {
     paddingVertical: 5,
@@ -196,10 +157,26 @@ const newStyles = StyleSheet.create({
     height: 30,
     alignItems: 'stretch',
     marginTop: 17,
+    flexDirection: 'row',
+    justifyContent: 'space-between',
     ...debug('green'),
+  },
+  closeWrapper: {
+    paddingVertical: 6,
+    paddingRight: 10,
+    paddingLeft: 10,
+    marginLeft: 5,
+    ...debug('brown'),
+    alignSelf: 'flex-start',
+  },
+  close: {
+    width: 13,
+    height: 13,
+    ...debug('silver'),
   },
   input: {
     height: 20,
+    flex: 1,
     ...debug('purple'),
   },
 });
