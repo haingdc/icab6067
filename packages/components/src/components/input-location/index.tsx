@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Image, TextInput , ImageSourcePropType, ViewStyle, StyleProp, StyleSheet } from 'react-native';
+import { View, Image, TextInput , Platform, ImageSourcePropType, ViewStyle, StyleProp, StyleSheet } from 'react-native';
 import pic_compass from '../../../assets/compass.png';
 import pic_locate  from '../../../assets/locate.png';
 import pic_line    from '../../../assets/line.png';
@@ -178,9 +178,15 @@ const newStyles = StyleSheet.create({
     height: 20,
     flex: 1,
     ...debug('purple'),
+    ...Platform.OS == 'web' ? addBorderBottom() : {},
+
   },
 });
 
 function debug(borderColor: string) {
   return globalThis.debug ? { borderColor, borderWidth: 1 } : undefined;
+}
+
+function addBorderBottom() {
+  return { borderBottomColor: '#ced0d2', borderBottomWidth: 1 };
 }
