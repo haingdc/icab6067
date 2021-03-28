@@ -6,6 +6,7 @@ platform :ios, '11.0'
 target 'myprojectname' do
    # React Native Maps dependencies
    rn_maps_path = '../../../node_modules/react-native-maps'
+   pod 'react-native-maps', :path => '../../../node_modules/react-native-maps'
    pod 'react-native-google-maps', :path => rn_maps_path
    pod 'GoogleMaps'
    pod 'Google-Maps-iOS-Utils'
@@ -37,6 +38,3 @@ target 'myprojectname-tvOS' do
     # Pods for testing
   end
 end
-
-
-pod 'react-native-maps', :path => '../../../node_modules/react-native-maps'

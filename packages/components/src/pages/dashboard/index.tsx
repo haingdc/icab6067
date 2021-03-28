@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
-import { View, StyleSheet } from 'react-native';
+import { Text, View, StyleSheet, Dimensions } from 'react-native';
 import MapView, { Marker } from 'react-native-maps';
-import { InputLocation } from '../../components/input-location';
+import { InputLocation, NewLocation } from '../../components/input-location';
 
 const Marker2 = (MapView as any).Marker;
-console.log({ MapView, Marker })
+console.log('dimensionsss', Dimensions.get('window'));
 
 const initialRegion = {
   latitude: 37.78825,
@@ -23,7 +23,8 @@ export function Dashboard() {
   }
   return (
     <View
-      style={{ minHeight: 580, borderColor: 'red', borderWidth: 1, position: 'relative' }}
+      style={{ minHeight: 580, position: 'relative' }}
+      onLayout={event => console.log('-> onLayout', event.nativeEvent.layout)}
     >
       <MapView
         style={ styles.map }
@@ -35,13 +36,14 @@ export function Dashboard() {
           setMarker(e.nativeEvent.coordinate )
         }} />
       </MapView>
-      <InputLocation type="location1" value="16th Avenue, 4th Cross Street, Chennai" onChangeText={() => {}} style={styles.locate} />
-      <InputLocation
+      <NewLocation style={{}} />
+      {/* <InputLocation type="location1" value="16th Avenue, 4th Cross Street, Chennai" onChangeText={() => {}} style={styles.locate} /> */}
+      {/* <InputLocation
         type="location2"
         value="Destination Please. ?"
         onChangeText={() => {}}
         style={styles.destination}
-      />
+      /> */}
     </View>
   );
 }
