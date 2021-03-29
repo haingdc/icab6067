@@ -1,14 +1,23 @@
-import React, { useState } from 'react';
+import React, { useReducer, useState } from 'react';
 import { Text, View, StyleSheet, Dimensions } from 'react-native';
 import MapView, { Marker } from 'react-native-maps';
-import { InputLocation, NewLocation } from '../../components/input-location';
+import { InputLocation } from '../../components/input-location';
+import { InputLocations } from '../../components/input-multi-locations';
 
 const Marker2 = (MapView as any).Marker;
 console.log('dimensionsss', Dimensions.get('window'));
 
+interface State {
+  status: 'initial' | 'enter locations';
+}
+
+interface Action {
+  type: string
+}
+
 const initialRegion = {
-  latitude: 37.78825,
-  longitude: -122.4324,
+  latitude: 16.4619,
+  longitude: 107.59546,
   latitudeDelta: 0.0922,
   longitudeDelta: 0.0421,
 };
@@ -16,11 +25,37 @@ const initialRegion = {
 export function Dashboard() {
   const [region, setRegion] = useState(initialRegion);
   const [marker, setMarker] = useState({
-    latitude: 37.78825, longitude: -122.4324,
+    latitude: 16.4619, longitude: 107.59546,
   });
+
+  const initialState: State = {
+    status: 'initial',
+  }
+
+  const [state, dispatch] = useReducer<
+    (prevState: State, action: Action) => State
+  >(function reducer(prevState, action) {
+    switch (action.type) {
+      case 'initial':
+        return {
+          ...prevState,
+          status: 'initial',
+        }
+      case 'enter locations':
+        return {
+          ...prevState,
+          status: 'enter locations',
+        }
+      default:
+        return prevState
+    }
+  }, initialState)
+
+
   function onRegionChange(region) {
     setRegion(region)
   }
+
   return (
     <View
       style={{ minHeight: 580, position: 'relative' }}
@@ -36,14 +71,17 @@ export function Dashboard() {
           setMarker(e.nativeEvent.coordinate )
         }} />
       </MapView>
-      <NewLocation style={{}} />
-      {/* <InputLocation type="location1" value="16th Avenue, 4th Cross Street, Chennai" onChangeText={() => {}} style={styles.locate} /> */}
-      {/* <InputLocation
+      {/* <InputLocations /> */}
+      <InputLocation
+        type="location1"
+        value="Your Location"
+        onChangeText={() => {}} style={styles.locate}
+      />
+      <InputLocation
         type="location2"
         value="Destination Please. ?"
-        onChangeText={() => {}}
         style={styles.destination}
-      /> */}
+      />
     </View>
   );
 }
