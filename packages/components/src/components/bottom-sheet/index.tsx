@@ -1,5 +1,5 @@
 // original source: https://medium.com/@ndyhrdy/making-the-bottom-sheet-modal-using-react-native-e226a30bed13 🙇
-import React, { useEffect, useRef } from 'react'
+import React, { PropsWithChildren, useEffect, useRef } from 'react'
 import {
   Animated,
   Dimensions,
@@ -9,7 +9,7 @@ import {
   View,
 } from 'react-native'
 
-export function BottomSheet(props) {
+export function BottomSheet(props: PropType) {
   const screenHeight = Dimensions.get('screen').height
   const panY = useRef(new Animated.Value(screenHeight)).current
 
@@ -104,3 +104,7 @@ const styles = StyleSheet.create({
     width: 45,
   },
 });
+
+interface PropType extends PropsWithChildren<any> {
+  onDismiss: () => void,
+}

@@ -4,6 +4,7 @@ import pic_compass from '../../../assets/compass.png';
 import pic_locate from '../../../assets/locate.png';
 import pic_line from '../../../assets/line.png';
 import pic_x from '../../../assets/x.png';
+import { environments } from '../../environments';
 
 
 export function InputLocations(props) {
@@ -102,8 +103,8 @@ const styles = StyleSheet.create({
     ...Platform.OS == 'web' ? addBorderBottom() : {},
   },
 });
-function debug(borderColor: string) {
-  return globalThis.debug ? { borderColor, borderWidth: 1 } : undefined;
+export function debug(borderColor: string, borderWidth = 1) {
+  return environments.debug ? { borderColor, borderWidth } : undefined;
 }
 function addBorderBottom() {
   return { borderBottomColor: '#ced0d2', borderBottomWidth: 1 };

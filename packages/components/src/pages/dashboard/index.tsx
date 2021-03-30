@@ -1,8 +1,9 @@
 import React, { useReducer, useState } from 'react';
 import { Text, View, StyleSheet, Dimensions } from 'react-native';
 import MapView, { Marker } from 'react-native-maps';
+import { BottomSheet } from '../../components/bottom-sheet';
 import { InputLocation } from '../../components/input-location';
-import { InputLocations } from '../../components/input-multi-locations';
+import { debug, InputLocations } from '../../components/input-multi-locations';
 
 const Marker2 = (MapView as any).Marker;
 console.log('dimensionsss', Dimensions.get('window'));
@@ -71,17 +72,47 @@ export function Dashboard() {
           setMarker(e.nativeEvent.coordinate )
         }} />
       </MapView>
-      {/* <InputLocations /> */}
-      <InputLocation
-        type="location1"
-        value="Your Location"
-        onChangeText={() => {}} style={styles.locate}
-      />
-      <InputLocation
-        type="location2"
-        value="Destination Please. ?"
-        style={styles.destination}
-      />
+      {
+              state.status == 'initial'
+
+                        ?
+              <>
+                <InputLocation
+                  type="location1"
+                  value="Your Location"
+                  onChangeText={() => {}} style={styles.locate}
+                />
+                <InputLocation
+                  type="location2"
+                  value="Destination Please. ?"
+                  style={styles.destination}
+                  onFocus={() => dispatch({ type: 'enter locations'})}
+                />
+              </>
+                        :
+
+                    undefined
+      }
+      {
+              state.status == 'enter locations'
+
+                        ?
+
+              <>
+                <InputLocations />
+                <BottomSheet onDismiss={() => dispatch({ type: 'initial' })}>
+                  <Text style={{ ...debug('purple', 3) }}>Tet that hao huc</Text>
+                  <Text style={{ ...debug('purple', 3) }}>Tet that hao huc</Text>
+                  <Text style={{ ...debug('purple', 3) }}>Tet that hao huc</Text>
+                  <Text style={{ ...debug('purple', 3) }}>Tet that hao huc</Text>
+                  <Text style={{ ...debug('purple', 3) }}>Tet that hao huc</Text>
+                </BottomSheet>
+              </>
+
+                        :
+
+                     undefined
+      }
     </View>
   );
 }
