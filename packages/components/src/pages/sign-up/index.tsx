@@ -69,7 +69,8 @@ export function SignUp() {
 
 const styles = StyleSheet.create({
   container: {
-    paddingTop: 126,
+    paddingTop: 96,
+    paddingHorizontal: 30,
     width: 375,
     alignSelf: 'center'  ,
   },
@@ -91,11 +92,11 @@ const styles = StyleSheet.create({
     alignSelf: 'center',
   },
   desc: {
-    marginTop: 14,
+    marginTop: 6,
     alignSelf: 'center',
   },
   name: {
-    marginTop: 148,
+    marginTop: 43,
   },
   phone: {
     marginTop: 20,
@@ -113,7 +114,7 @@ const styles = StyleSheet.create({
   },
   bottomText: {
     alignSelf: 'center',
-    marginTop: 40,
+    marginTop: 10,
   },
   signup: {
     color: '#3277D8',

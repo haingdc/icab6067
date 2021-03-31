@@ -54,7 +54,7 @@ export function SignIn() {
 
 const styles = StyleSheet.create({
   container: {
-    paddingTop: 100,
+    paddingTop: 96,
     paddingHorizontal: 30,
     width: 375,
     alignSelf: 'center'  ,
