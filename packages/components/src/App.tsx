@@ -23,7 +23,7 @@ export function App() {
           contentInsetAdjustmentBehavior="automatic"
           style={styles.scrollView}
         >
-          <AppHeader />
+          {/* <AppHeader /> */}
           {global.HermesInternal == null ? null : (
             <View style={styles.engine}>
               <Text style={styles.footer}>Engine: Hermes</Text>
@@ -31,9 +31,8 @@ export function App() {
           )}
           <Router>
             <View>
-              <Text>App</Text>
-              <Test />
-                <View>
+              {/* <Test /> */}
+                {/* <View>
                   <Link to="/">
                     <Text>Home</Text>
                   </Link>
@@ -48,7 +47,7 @@ export function App() {
                   <Link to="/dashboard">
                     <Text>Dashboard</Text>
                   </Link>
-                </View>
+                </View> */}
 
               <Switch>
                 <Route path="/signin">

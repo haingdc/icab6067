@@ -101,11 +101,7 @@ export function Dashboard() {
               <>
                 <InputLocations />
                 <BottomSheet onDismiss={() => dispatch({ type: 'initial' })}>
-                  <Text style={{ ...debug('purple', 3) }}>Tet that hao huc</Text>
-                  <Text style={{ ...debug('purple', 3) }}>Tet that hao huc</Text>
-                  <Text style={{ ...debug('purple', 3) }}>Tet that hao huc</Text>
-                  <Text style={{ ...debug('purple', 3) }}>Tet that hao huc</Text>
-                  <Text style={{ ...debug('purple', 3) }}>Tet that hao huc</Text>
+                  <Text style={{ backgroundColor: '#fff', marginHorizontal: 20, marginBottom: 20, ...debug('purple', 3) }}>Tet that hao huc</Text>
                 </BottomSheet>
               </>
 
