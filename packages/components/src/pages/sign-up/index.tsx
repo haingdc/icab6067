@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { View, Text, StyleSheet, Image, TouchableOpacity } from 'react-native';
 import redCar from '../../../assets/red-car.png';
-import { InputApp } from '../../components/input';
+import { Input } from '../../components/input';
 import { Link } from '../../Router';
 
 export function SignUp() {
@@ -24,28 +24,28 @@ export function SignUp() {
       <Image source={redCar as any} style={styles.img} />
       <Text style={[styles.text1, styles.welcome]}>Welcome Aboard!</Text>
       <Text style={[styles.text2, styles.desc]}>Signup with iCab in simple steps</Text>
-      <InputApp
+      <Input
         type="username"
         value={data.name}
         placeholder="Name"
         onChangeText={handleChange('name')}
         style={styles.name}
       />
-      <InputApp
+      <Input
         type="telephoneNumber"
         value={data.phone}
         placeholder="Phone Number"
         onChangeText={handleChange('phone')}
         style={styles.phone}
       />
-      <InputApp
+      <Input
         type="emailAddress"
         value={data.mail}
         placeholder="Email"
         onChangeText={handleChange('mail')}
         style={styles.phone}
       />
-      <InputApp
+      <Input
         type="password"
         value={data.pass}
         placeholder="Password"

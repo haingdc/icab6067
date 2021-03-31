@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { View, Text, StyleSheet, Image, TouchableOpacity } from 'react-native';
 import greenCar from '../../../assets/green-car.png';
-import { InputApp } from '../../components/input';
+import { Input } from '../../components/input';
 import { Link } from '../../Router';
 
 export function SignIn() {
@@ -14,7 +14,7 @@ export function SignIn() {
       <Image source={greenCar as any} style={styles.img} />
       <Text style={[styles.text1, styles.welcome]}>Welcome Back!</Text>
       <Text style={[styles.text2, styles.desc]}>Login to continue using iCab</Text>
-      <InputApp
+      <Input
         type="emailAddress"
         value={data.mail}
         placeholder="Email"
@@ -26,7 +26,7 @@ export function SignIn() {
         }}
         style={styles.mail}
       />
-      <InputApp
+      <Input
         type="password"
         value={data.pass}
         placeholder="Password"
@@ -45,9 +45,7 @@ export function SignIn() {
       <Text style={[styles.text2, styles.bottomText]}>
         New User?
         <Link to="/signup">
-          <Text style={styles.signup}>
-            Sign up for a new acccount
-          </Text>
+          <Text style={styles.signup}>Sign up for a new acccount</Text>
         </Link>
       </Text>
     </View>
@@ -56,7 +54,8 @@ export function SignIn() {
 
 const styles = StyleSheet.create({
   container: {
-    paddingTop: 126,
+    paddingTop: 100,
+    paddingHorizontal: 30,
     width: 375,
     alignSelf: 'center'  ,
   },
@@ -78,11 +77,11 @@ const styles = StyleSheet.create({
     alignSelf: 'center',
   },
   desc: {
-    marginTop: 14,
+    marginTop: 6,
     alignSelf: 'center',
   },
   mail: {
-    marginTop: 148,
+    marginTop: 98,
   },
   pass: {
     marginTop: 20,
@@ -101,7 +100,7 @@ const styles = StyleSheet.create({
   },
   bottomText: {
     alignSelf: 'center',
-    marginTop: 40,
+    marginTop: 20,
   },
   signup: {
     color: '#3277D8',

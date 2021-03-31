@@ -29,7 +29,7 @@ function InputBase(props: {
         style={{ flex: 1, height: 48, borderWidth: 0 }}
       />
     </View>
-  )
+  );
 }
 
 const styles = StyleSheet.create({
@@ -48,7 +48,7 @@ const photoLookup: Record<string, [any, number, number]> = {
   telephoneNumber : [pic_phone , 13, 13],
 };
 
-export function InputApp(props: PropType) {
+export function Input(props: PropType) {
   const { style, type, placeholder, value, onChangeText } = props;
   const [source, width, height] = photoLookup[type];
   return (
