@@ -38,3 +38,5 @@ target 'myprojectname-tvOS' do
     # Pods for testing
   end
 end
+
+pod 'RNCAsyncStorage', :path => '../../../node_modules/@react-native-async-storage/async-storage'
