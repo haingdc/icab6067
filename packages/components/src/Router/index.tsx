@@ -6,6 +6,7 @@ export {
   Route,
   Switch,
   Link,
+  Redirect,
 } from "react-router-native";
 
 export function Test() {

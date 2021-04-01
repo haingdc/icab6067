@@ -2,9 +2,11 @@ import React, { useState } from 'react';
 import { View, Text, StyleSheet, Image, TouchableOpacity } from 'react-native';
 import redCar from '../../../assets/red-car.png';
 import { Input } from '../../components/input';
+import { AuthContext } from '../../contexts/auth';
 import { Link } from '../../Router';
 
 export function SignUp() {
+  const { signUp     } = React.useContext(AuthContext);
   const [data, setData] = useState({
     name : '',
     phone: '',
@@ -52,7 +54,7 @@ export function SignUp() {
         onChangeText={handleChange('pass')}
         style={styles.phone}
       />
-      <TouchableOpacity style={{ borderRadius: 6, overflow: 'hidden', marginTop: 33 }} onPress={() => {}}>
+      <TouchableOpacity style={{ borderRadius: 6, overflow: 'hidden', marginTop: 33 }} onPress={() => signUp(data)}>
         <Text style={styles.submit}>Signup</Text>
       </TouchableOpacity>
       <Text style={[styles.text2, styles.bottomText]}>
