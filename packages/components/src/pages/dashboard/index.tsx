@@ -1,12 +1,29 @@
-import React, { useReducer, useState } from 'react';
-import { Text, View, StyleSheet, Dimensions } from 'react-native';
-import MapView, { Marker } from 'react-native-maps';
-import { BottomSheet } from '../../components/bottom-sheet';
-import { InputLocation } from '../../components/input-location';
-import { debug, InputLocations } from '../../components/input-multi-locations';
+import React, { useReducer, useState } from 'react'
+import { Image, Text, View, StyleSheet, Dimensions } from 'react-native'
+import MapView, { Marker } from 'react-native-maps'
+import Carousel from 'react-native-snap-carousel'
+import { BottomSheet } from '../../components/bottom-sheet'
+import { InputLocation } from '../../components/input-location'
+import { debug, InputLocations } from '../../components/input-multi-locations'
+import vehicle_shedan    from '../../../assets/vehicle_shedan.png'
+import vehicle_van       from '../../../assets/vehicle_van.png'
+import vehicle_hatchback from '../../../assets/vehicle_hatchback.png'
+import vehicle_su        from '../../../assets/vehicle_su.png'
 
 const Marker2 = (MapView as any).Marker;
-console.log('dimensionsss', Dimensions.get('window'));
+// follow instruction from official website react-native-snap-carousel to have spacing between slides
+const  horizontalMargin  = 30
+const  slideWidth        = 64
+export const sliderWidth = Dimensions.get('window').width
+export const itemWidth   = slideWidth + horizontalMargin * 2
+const  itemHeight        = 156
+
+export const data = [
+  { title: 'Shedan'    , price: '2.98', source: vehicle_shedan    },
+  { title: 'Hatchback' , price: '1.98', source: vehicle_hatchback },
+  { title: 'Van'       , price: '4.98', source: vehicle_van       },
+  { title: 'Su'        , price: '4.98', source: vehicle_su        },
+]
 
 interface State {
   status: 'initial' | 'enter locations';
@@ -101,7 +118,18 @@ export function Dashboard() {
               <>
                 <InputLocations />
                 <BottomSheet onDismiss={() => dispatch({ type: 'initial' })}>
-                  <Text style={{ backgroundColor: '#fff', marginHorizontal: 20, marginBottom: 20, ...debug('purple', 3) }}>Tet that hao huc</Text>
+                  <View style={carouselStyles.container}>
+                    <Carousel
+                      data={data}
+                      renderItem={renderItem}
+                      itemWidth={itemWidth}
+                      sliderWidth={sliderWidth}
+                      inactiveSlideScale={1}
+                      inactiveSlideOpacity={1}
+                      activeSlideAlignment="start"
+                      removeClippedSubviews={false}
+                    />
+                  </View>
                 </BottomSheet>
               </>
 
@@ -111,6 +139,21 @@ export function Dashboard() {
       }
     </View>
   );
+
+  function renderItem(data) {
+    const { item, index } = data
+    return (
+      <View style={carouselStyles.slide}>
+        <View style={carouselStyles.slideInnerContainer}>
+          <Text style={carouselStyles.header}>{item.title}</Text>
+          <View style={[carouselStyles.body, index == 0 ? carouselStyles.bodyActive : {}]}>
+            <Image source={item.source} style={carouselStyles.image} />
+          </View>
+          <Text style={[carouselStyles.footer, index == 0 ? carouselStyles.footerActive : {}]}>${item.price}</Text>
+        </View>
+      </View>
+    );
+  }
 }
 
 const styles = StyleSheet.create({
@@ -137,3 +180,66 @@ const styles = StyleSheet.create({
     alignSelf: 'center',
   },
  });
+
+ export const carouselStyles = StyleSheet.create({
+  container: {
+    backgroundColor: '#fff',
+    marginHorizontal: 20,
+    borderRadius: 6,
+    overflow: 'hidden',
+  },
+  slide: {
+    width: itemWidth,
+    height: itemHeight,
+    paddingHorizontal: horizontalMargin,
+    paddingTop: 20,
+  },
+  slideInnerContainer: {
+    minWidth: slideWidth,
+    flex: 1,
+    alignItems: 'center',
+  },
+  slideWrapper: {
+    height: 168,
+    width: 335,
+  },
+  header: {
+    backgroundColor: '#323643',
+    color: '#fff',
+    fontSize: 8,
+    textTransform: 'uppercase',
+    textAlign: 'center',
+    paddingTop: 4,
+    paddingBottom: 6,
+    borderRadius: 3,
+    paddingHorizontal: 6,
+  },
+  body: {
+    marginTop: 10,
+    width: 64,
+    height: 64,
+    borderRadius: 40,
+    borderWidth: 1,
+    borderColor: 'transparent',
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: '#F7F7F7',
+  },
+  bodyActive: {
+    borderColor: '#323643',
+    backgroundColor: '#fff',
+  },
+  image: {
+    width: 39,
+    height: 16,
+  },
+  footer: {
+    fontSize: 12,
+    marginTop: 10,
+    textAlign: 'center',
+    color: '#CED0D2',
+  },
+  footerActive: {
+    color: '#606470',
+  },
+})
