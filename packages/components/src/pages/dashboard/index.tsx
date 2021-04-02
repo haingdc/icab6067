@@ -1,5 +1,5 @@
 import React, { useReducer, useState } from 'react'
-import { Image, Text, View, StyleSheet, Dimensions } from 'react-native'
+import { Image, Text, View, StyleSheet, Dimensions, TouchableOpacity } from 'react-native'
 import MapView, { Marker } from 'react-native-maps'
 import Carousel from 'react-native-snap-carousel'
 import { BottomSheet } from '../../components/bottom-sheet'
@@ -130,6 +130,11 @@ export function Dashboard() {
                       removeClippedSubviews={false}
                     />
                   </View>
+                  <View style={buttonStyles.container}>
+                    <TouchableOpacity >
+                      <Text style={buttonStyles.text}>Confirm Pickup</Text>
+                    </TouchableOpacity>
+                  </View>
                 </BottomSheet>
               </>
 
@@ -184,9 +189,10 @@ const styles = StyleSheet.create({
  export const carouselStyles = StyleSheet.create({
   container: {
     backgroundColor: '#fff',
-    marginHorizontal: 20,
+    marginHorizontal: 8,
     borderRadius: 6,
-    overflow: 'hidden',
+    ...debug('tomato'),
+    overflow: 'scroll',
   },
   slide: {
     width: itemWidth,
@@ -213,6 +219,7 @@ const styles = StyleSheet.create({
     paddingBottom: 6,
     borderRadius: 3,
     paddingHorizontal: 6,
+    overflow: 'hidden',
   },
   body: {
     marginTop: 10,
@@ -241,5 +248,21 @@ const styles = StyleSheet.create({
   },
   footerActive: {
     color: '#606470',
+  },
+})
+
+const buttonStyles = StyleSheet.create({
+  container: {
+    marginHorizontal: 8,
+    borderRadius: 6,
+    marginVertical: 20,
+    overflow: 'hidden',
+  },
+  text: {
+    backgroundColor: '#3277D8',
+    fontSize: 16,
+    paddingVertical: 15,
+    color: '#fff',
+    textAlign: 'center',
   },
 })

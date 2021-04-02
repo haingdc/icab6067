@@ -5,9 +5,14 @@ import {
   Dimensions,
   Modal,
   PanResponder,
+  ScrollView,
   StyleSheet,
+  TouchableHighlight,
+  TouchableOpacity,
+  TouchableWithoutFeedback,
   View,
 } from 'react-native'
+import { debug } from '../input-multi-locations'
 
 export function BottomSheet(props: PropType) {
   const screenHeight = Dimensions.get('screen').height
@@ -74,6 +79,15 @@ export function BottomSheet(props: PropType) {
           {props.children}
         </Animated.View>
       </View>
+      {/* <ScrollView>
+        <TouchableHighlight>
+          <TouchableWithoutFeedback>
+            <View>
+              {props.children}
+            </View>
+          </TouchableWithoutFeedback>
+        </TouchableHighlight>
+      </ScrollView> */}
     </Modal>
   )
 }
@@ -85,12 +99,13 @@ const styles = StyleSheet.create({
     justifyContent: 'flex-end',
   },
   container: {
-    backgroundColor: 'white',
+    backgroundColor: 'transparent',
     paddingTop: 12,
     paddingHorizontal: 12,
     borderTopRightRadius: 12,
     borderTopLeftRadius: 12,
     minHeight: 200,
+    flexGrow: 0,
   },
   sliderIndicatorRow: {
     flexDirection: 'row',
