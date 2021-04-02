@@ -9,6 +9,7 @@ import vehicle_shedan    from '../../../assets/vehicle_shedan.png'
 import vehicle_van       from '../../../assets/vehicle_van.png'
 import vehicle_hatchback from '../../../assets/vehicle_hatchback.png'
 import vehicle_su        from '../../../assets/vehicle_su.png'
+import { Driver } from './sub-components/driver'
 
 const Marker2 = (MapView as any).Marker;
 // follow instruction from official website react-native-snap-carousel to have spacing between slides
@@ -151,11 +152,8 @@ export function Dashboard() {
                 state.status == 'driver'
 
                         ?
-                <BottomSheet onDismiss={() => dispatch({ type: 'enter locations' })}>
-                  <View style={driverStyles.container}>
-                    <Text>Driver</Text>
-                  </View>
-                </BottomSheet>
+
+                    <Driver dispatch={dispatch} />
 
                         :
 
@@ -270,15 +268,6 @@ const styles = StyleSheet.create({
   },
 })
 
-export const driverStyles = StyleSheet.create({
-  container: {
-    backgroundColor: '#fff',
-    marginHorizontal: 20,
-    marginBottom: 20,
-    borderRadius: 6,
-    ...debug('tomato'),
-  },
-})
 
 const buttonStyles = StyleSheet.create({
   container: {
