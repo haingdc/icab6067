@@ -26,7 +26,7 @@ export const data = [
 ]
 
 interface State {
-  status: 'initial' | 'enter locations';
+  status: 'initial' | 'enter locations' | 'driver'
 }
 
 interface Action {
@@ -34,9 +34,9 @@ interface Action {
 }
 
 const initialRegion = {
-  latitude: 16.4619,
-  longitude: 107.59546,
-  latitudeDelta: 0.0922,
+  latitude      : 16.4619,
+  longitude     : 107.59546,
+  latitudeDelta : 0.0922,
   longitudeDelta: 0.0421,
 };
 
@@ -63,6 +63,11 @@ export function Dashboard() {
         return {
           ...prevState,
           status: 'enter locations',
+        }
+      case 'driver':
+        return {
+          ...prevState,
+          status: 'driver',
         }
       default:
         return prevState
@@ -131,12 +136,26 @@ export function Dashboard() {
                     />
                   </View>
                   <View style={buttonStyles.container}>
-                    <TouchableOpacity >
+                    <TouchableOpacity onPress={() => dispatch({ type: 'driver' })}>
                       <Text style={buttonStyles.text}>Confirm Pickup</Text>
                     </TouchableOpacity>
                   </View>
                 </BottomSheet>
               </>
+
+                        :
+
+                     undefined
+      }
+      {
+                state.status == 'driver'
+
+                        ?
+                <BottomSheet onDismiss={() => dispatch({ type: 'enter locations' })}>
+                  <View style={driverStyles.container}>
+                    <Text>Driver</Text>
+                  </View>
+                </BottomSheet>
 
                         :
 
@@ -189,7 +208,7 @@ const styles = StyleSheet.create({
  export const carouselStyles = StyleSheet.create({
   container: {
     backgroundColor: '#fff',
-    marginHorizontal: 8,
+    marginHorizontal: 20,
     borderRadius: 6,
     ...debug('tomato'),
     overflow: 'scroll',
@@ -251,9 +270,19 @@ const styles = StyleSheet.create({
   },
 })
 
+export const driverStyles = StyleSheet.create({
+  container: {
+    backgroundColor: '#fff',
+    marginHorizontal: 20,
+    marginBottom: 20,
+    borderRadius: 6,
+    ...debug('tomato'),
+  },
+})
+
 const buttonStyles = StyleSheet.create({
   container: {
-    marginHorizontal: 8,
+    marginHorizontal: 20,
     borderRadius: 6,
     marginVertical: 20,
     overflow: 'hidden',
