@@ -190,14 +190,14 @@ const styles = StyleSheet.create({
     ...StyleSheet.absoluteFillObject,
   },
   locate: {
-    position: 'absolute',
-    top: 20,
+    // position: 'absolute',
+    // top: 20,
     minWidth: 335,
     alignSelf: 'center',
   },
   destination: {
-    position: 'absolute',
-    bottom: 20,
+    // position: 'absolute',
+    // bottom: 20,
     minWidth: 335,
     alignSelf: 'center',
   },
