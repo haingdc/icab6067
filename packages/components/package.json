@@ -16,6 +16,7 @@
     "@userfront/react": "^0.1.23",
     "react-native-maps": "0.27.1",
     "react-native-snap-carousel": "^3.9.1",
+    "react-native-vector-icons": "^8.1.0",
     "react-router-dom": "^5.2.0",
     "react-router-native": "^5.2.0"
   },

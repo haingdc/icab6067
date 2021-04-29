@@ -2,6 +2,7 @@ import React, { useReducer, useState } from 'react'
 import { Image, Text, View, StyleSheet, Dimensions, TouchableOpacity } from 'react-native'
 import MapView, { Marker } from 'react-native-maps'
 import Carousel from 'react-native-snap-carousel'
+import Icon from 'react-native-vector-icons/FontAwesome'
 import { BottomSheet } from '../../components/bottom-sheet'
 import { InputLocation } from '../../components/input-location'
 import { debug, InputLocations } from '../../components/input-multi-locations'
@@ -100,6 +101,12 @@ export function Dashboard() {
 
                         ?
               <>
+                <Icon.Button
+                  name="facebook"
+                  backgroundColor="#3b5998"
+                >
+                  Login with Facebook
+                </Icon.Button>
                 <InputLocation
                   type="location1"
                   value="Your Location"
