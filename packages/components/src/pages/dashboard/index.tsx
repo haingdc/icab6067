@@ -11,6 +11,8 @@ import vehicle_van       from '../../../assets/vehicle_van.png'
 import vehicle_hatchback from '../../../assets/vehicle_hatchback.png'
 import vehicle_su        from '../../../assets/vehicle_su.png'
 import { Driver } from './sub-components/driver'
+import { HomeMap } from '../HomeMap'
+import { e } from '../../utils/react-helpers'
 
 const Marker2 = (MapView as any).Marker;
 // follow instruction from official website react-native-snap-carousel to have spacing between slides
@@ -86,6 +88,7 @@ export function Dashboard() {
       style={{ minHeight: 580, position: 'relative' }}
       onLayout={event => console.log('-> onLayout', event.nativeEvent.layout)}
     >
+      {e(HomeMap)}
       <MapView
         style={ styles.map }
         region={region}
