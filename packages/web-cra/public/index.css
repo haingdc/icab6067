@@ -3,6 +3,21 @@
   src: url(./Fonts/FontAwesome.ttf);
 }
 
+@font-face {
+  font-family: AntDesign;
+  src: url(./Fonts/AntDesign.ttf);
+}
+
+@font-face {
+  font-family: MaterialIcons;
+  src: url(./Fonts/MaterialIcons.ttf);
+}
+
+@font-face {
+  font-family: Entypo;
+  src: url(./Fonts/Entypo.ttf);
+}
+
 html,
 body,
 #root,

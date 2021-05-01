@@ -2,7 +2,6 @@ import React, { useReducer, useState } from 'react'
 import { Image, Text, View, StyleSheet, Dimensions, TouchableOpacity } from 'react-native'
 import MapView, { Marker } from 'react-native-maps'
 import Carousel from 'react-native-snap-carousel'
-import Icon from 'react-native-vector-icons/FontAwesome'
 import { BottomSheet } from '../../components/bottom-sheet'
 import { InputLocation } from '../../components/input-location'
 import { debug, InputLocations } from '../../components/input-multi-locations'
@@ -11,7 +10,7 @@ import vehicle_van       from '../../../assets/vehicle_van.png'
 import vehicle_hatchback from '../../../assets/vehicle_hatchback.png'
 import vehicle_su        from '../../../assets/vehicle_su.png'
 import { Driver } from './sub-components/driver'
-import { HomeMap } from '../HomeMap'
+import { HomeScreen } from '../HomeScreen'
 import { e } from '../../utils/react-helpers'
 
 const Marker2 = (MapView as any).Marker;
@@ -88,8 +87,8 @@ export function Dashboard() {
       style={{ minHeight: 580, position: 'relative' }}
       onLayout={event => console.log('-> onLayout', event.nativeEvent.layout)}
     >
-      {e(HomeMap)}
-      <MapView
+      <HomeScreen />
+      {/* <MapView
         style={ styles.map }
         region={region}
         onRegionChange={onRegionChange}
@@ -98,18 +97,12 @@ export function Dashboard() {
         <Marker2 draggable coordinate={marker} onDragEnd={e => {
           setMarker(e.nativeEvent.coordinate )
         }} />
-      </MapView>
+      </MapView> */}
       {
               state.status == 'initial'
 
                         ?
               <>
-                <Icon.Button
-                  name="facebook"
-                  backgroundColor="#3b5998"
-                >
-                  Login with Facebook
-                </Icon.Button>
                 <InputLocation
                   type="location1"
                   value="Your Location"
