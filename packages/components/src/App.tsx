@@ -15,6 +15,8 @@ import { SignUp } from './pages/sign-up';
 import { Dashboard } from './pages/dashboard';
 import { AuthContext, AuthTypes } from './contexts/auth';
 import { IsUserRedirect, ProtectedRoute } from './Router/helper-components';
+import { DestinationSearch } from './pages/DestinationSearch';
+import { e } from './utils/react-helpers';
 
 export function App() {
   const initialState = {
@@ -110,6 +112,7 @@ export function App() {
   return (
     <AuthContext.Provider value={authContext}>
       <StatusBar barStyle="dark-content" />
+      {e(DestinationSearch)}
       <SafeAreaView>
         <ScrollView
           contentInsetAdjustmentBehavior="automatic"
