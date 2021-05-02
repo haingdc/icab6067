@@ -32,8 +32,12 @@ export function DestinationSearch(props) {
               console.log(data, details)
             },
             query: {
-              key: '',
+              key: 'AIzaSyA_lsmHKQ5FTBzSHFlJXWqqSQxHfuvM8Lc',
               language: 'en',
+            },
+            requestUrl: {
+              useOnPlatform: 'web', // or "all"
+              url: 'http://localhost:8080/maps/api',
             },
           })
         ]
