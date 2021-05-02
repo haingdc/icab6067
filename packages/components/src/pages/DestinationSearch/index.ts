@@ -5,30 +5,22 @@ import { e }                                                                  fr
 import styles                                                                 from './styles'
 
 export function DestinationSearch(props) {
-  const [fromText, setFromText] = React.useState('')
-  const [destinationText, setDestinationText] = React.useState('')
+  const [originPlace     , setOriginPlace     ] = React.useState<any>(undefined)
+  const [destinationPlace, setDestinationPlace] = React.useState<any>(undefined)
+  React.useEffect(() =>  {
+    if(originPlace && destinationPlace) {
+      console.warn('Redirect to results')
+    }
+  }, [originPlace, destinationPlace])
   return (
     e(SafeAreaView, undefined,
       e(View, { style: styles.container },
         [
-          e(TextInput, {
-            key: 'from',
-            style: styles.textInput,
-            value: fromText,
-            onChangeText: setFromText,
-            placeholder: 'From'
-          }),
-          e(TextInput, {
-            key: 'to',
-            style: styles.textInput,
-            value: destinationText,
-            onChangeText: setDestinationText,
-            placeholder: 'Where to?'
-          }),
           e(GooglePlacesAutocomplete, {
-            key: 'autocomplete',
-            placeholder: 'Search',
+            key: 'autocomplete 1',
+            placeholder: 'Where from?',
             onPress(data, details = null) {
+              setOriginPlace({data, details})
               console.log(data, details)
             },
             query: {
@@ -39,7 +31,31 @@ export function DestinationSearch(props) {
               useOnPlatform: 'web', // or "all"
               url: 'http://localhost:8080/maps/api',
             },
-          })
+            fetchDetails: true,
+            styles: {
+              textInput: styles.textInput,
+            },
+          }),
+          e(GooglePlacesAutocomplete, {
+            key: 'autocomplete 2',
+            placeholder: 'Search',
+            onPress(data, details = null) {
+              setDestinationPlace({data, details})
+              console.log(data, details)
+            },
+            query: {
+              key: 'AIzaSyA_lsmHKQ5FTBzSHFlJXWqqSQxHfuvM8Lc',
+              language: 'en',
+            },
+            requestUrl: {
+              useOnPlatform: 'web', // or "all"
+              url: 'http://localhost:8080/maps/api',
+            },
+            fetchDetails: true,
+            styles: {
+              textInput: styles.textInput,
+            },
+          }),
         ]
       )
     )
