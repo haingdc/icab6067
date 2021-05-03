@@ -18,6 +18,11 @@
   src: url(./Fonts/Entypo.ttf);
 }
 
+@font-face {
+  font-family: Ionicons;
+  src: url(./Fonts/Ionicons.ttf);
+}
+
 html,
 body,
 #root,
