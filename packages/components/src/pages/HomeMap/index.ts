@@ -38,7 +38,10 @@ export function HomeMap(props) {
               style: {
                 width: 70,
                 height: 70,
-                resizeMode: 'contain'
+                resizeMode: 'contain',
+                transform: [
+                  { rotate: `${car.heading}deg` },
+                ],
               },
             }
           )

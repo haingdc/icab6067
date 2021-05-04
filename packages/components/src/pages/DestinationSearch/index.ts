@@ -1,7 +1,8 @@
 import React                                                                  from 'react'
-import { View, Text, TextInput, SafeAreaView                                } from 'react-native'
-import { GooglePlacesAutocomplete } from 'react-native-google-places-autocomplete';
+import { View, Text, TextInput, SafeAreaView }                                from 'react-native'
+import { GooglePlacesAutocomplete }                                           from 'react-native-google-places-autocomplete';
 import { e }                                                                  from '../../utils/react-helpers';
+import { PlaceRow } from './PlaceRow';
 import styles                                                                 from './styles'
 
 export function DestinationSearch(props) {
@@ -31,14 +32,21 @@ export function DestinationSearch(props) {
               useOnPlatform: 'web', // or "all"
               url: 'http://localhost:8080/maps/api',
             },
-            fetchDetails: true,
+            fetchDetails             : true ,
+            suppressDefaultStyles    : true ,
+            enablePoweredByContainer : false,
+            renderRow: (data) =>
+              e(PlaceRow, { text: data.description }),
             styles: {
               textInput: styles.textInput,
+              container: styles.autocompleteContainer,
+              listView: styles.listView,
+              separator: styles.separator,
             },
           }),
           e(GooglePlacesAutocomplete, {
             key: 'autocomplete 2',
-            placeholder: 'Search',
+            placeholder: 'Where to?',
             onPress(data, details = null) {
               setDestinationPlace({data, details})
               console.log(data, details)
@@ -51,11 +59,21 @@ export function DestinationSearch(props) {
               useOnPlatform: 'web', // or "all"
               url: 'http://localhost:8080/maps/api',
             },
-            fetchDetails: true,
+            fetchDetails             : true ,
+            suppressDefaultStyles    : true ,
+            enablePoweredByContainer : false,
+            renderRow: (data) =>
+              e(PlaceRow, { text: data.description }),
             styles: {
               textInput: styles.textInput,
+              container: { ...styles.autocompleteContainer, top: 55 },
+              separator: styles.separator,
             },
           }),
+
+          // Circle near Origin input
+          // Line between dots
+          // Square near Destination input
         ]
       )
     )
