@@ -7,7 +7,17 @@ export function UberTypes(props) {
   return (
     e(View, undefined,
       [
-        typesData.map(type => e(UberTypeRow, { key: type.id, type: type.type, price: type.price, image: type.type })),
+        typesData.map(type =>
+          e(
+            UberTypeRow,
+            {
+              key: type.id,
+              type: type.type,
+              price: type.price,
+              image: type.type
+            }
+          )
+        ),
         e(
           Pressable,
           {

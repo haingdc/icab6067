@@ -16,7 +16,7 @@ export function UberTypeRow(props: Props) {
           style: [
             styles.image,
           ],
-          source: typesLookup[type],
+          source: typesLookup[image],
         }),
         e(View , { key: 'middle', style: styles.middleContainer }, [
           e(Text, { key: 'icon person', style: styles.type }, [

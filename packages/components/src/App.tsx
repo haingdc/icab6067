@@ -17,6 +17,8 @@ import { AuthContext, AuthTypes } from './contexts/auth';
 import { IsUserRedirect, ProtectedRoute } from './Router/helper-components';
 import { DestinationSearch } from './pages/DestinationSearch';
 import { e } from './utils/react-helpers';
+import { SearchResults } from './pages/SearchResults';
+import { HomeScreen } from './pages/HomeScreen';
 
 export function App() {
   const initialState = {
@@ -112,71 +114,9 @@ export function App() {
   return (
     <AuthContext.Provider value={authContext}>
       <StatusBar barStyle="dark-content" />
-      {e(DestinationSearch)}
-      <SafeAreaView>
-        <ScrollView
-          contentInsetAdjustmentBehavior="automatic"
-          style={styles.scrollView}
-        >
-          {/* <AppHeader /> */}
-          {global.HermesInternal == null ? null : (
-            <View style={styles.engine}>
-              <Text style={styles.footer}>Engine: Hermes</Text>
-            </View>
-          )}
-          <Router>
-            <View>
-              {/* <Test /> */}
-                {/* <View>
-                  <Link to="/">
-                    <Text>Home</Text>
-                  </Link>
-                  <Link to="/signin">
-                    <Text>Login</Text></Link>
-                  <Link to="/signup">
-                    <Text>Sign up</Text>
-                  </Link>
-                  <Link to="/reset">
-                    <Text>Reset</Text>
-                  </Link>
-                  <Link to="/dashboard">
-                    <Text>Dashboard</Text>
-                  </Link>
-                </View> */}
-
-              <Switch>
-                <IsUserRedirect user={state.userToken || ''} path="/signin" loggedInPath="/dashboard" exact>
-                  <SignIn />
-                </IsUserRedirect>
-                <IsUserRedirect user={state.userToken || ''} path="/signup" loggedInPath="/dashboard" exact>
-                  <SignUp />
-                </IsUserRedirect>
-                <ProtectedRoute user={state.userToken || ''} path="/dashboard" pathname="/signin" exact>
-                  <Dashboard />
-                </ProtectedRoute>
-                <IsUserRedirect user={state.userToken || ''} path="/"    loggedInPath="/dashboard" exact >
-                  <SignIn />
-                </IsUserRedirect>
-                {/* <Route path="/signin">
-                  <SignIn />
-                </Route>
-                <Route path="/signup">
-                  <SignUp />
-                </Route>
-                <Route path="/reset">
-                  <PasswordReset />
-                </Route>
-                <Route path="/dashboard">
-                  <Dashboard />
-                </Route>
-                <Route path="/">
-                  <Dashboard />
-                </Route> */}
-              </Switch>
-            </View>
-          </Router>
-        </ScrollView>
-      </SafeAreaView>
+      {/* {e(HomeScreen)} */}
+      {e(SearchResults)}
+      {/* {e(DestinationSearch)} */}
     </AuthContext.Provider>
   )
 }
