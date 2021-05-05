@@ -1,5 +1,7 @@
 import React from 'react'
 import {
+  PermissionsAndroid,
+  Platform,
   SafeAreaView,
   ScrollView,
   StatusBar,
@@ -8,6 +10,7 @@ import {
   View,
 } from 'react-native'
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import Geolocation from '@react-native-community/geolocation';
 import { Route, Router, Switch, Link, Test, Redirect } from './Router';
 import { AppHeader } from './AppHeader'
 import { SignIn } from './pages/sign-in';
@@ -21,6 +24,30 @@ import { SearchResults } from './pages/SearchResults';
 import { HomeScreen } from './pages/HomeScreen';
 
 export function App() {
+  const androidPermission = async () => {
+    try {
+      const granted = await PermissionsAndroid.request(
+        PermissionsAndroid.PERMISSIONS.ACCESS_FINE_LOCATION,
+        {
+          title: "Cool Photo App Camera Permission",
+          message:
+            "Uber App needs access to your location " +
+            "so you can take awesome rides.",
+          buttonNeutral: "Ask Me Later",
+          buttonNegative: "Cancel",
+          buttonPositive: "OK"
+        }
+      );
+      if (granted === PermissionsAndroid.RESULTS.GRANTED) {
+        console.log("You can use the location");
+      } else {
+        console.log("Location permission denied");
+      }
+    } catch (err) {
+      console.warn(err);
+    }
+  }
+
   const initialState = {
     isLoading: true,
     isSignout: false,
@@ -81,6 +108,14 @@ export function App() {
     bootstrapAsync()
   }, [])
 
+  React.useEffect(() => {
+    if (Platform.OS == 'android') {
+      androidPermission()
+    } else if (Platform.OS == 'ios') {
+      Geolocation.requestAuthorization()
+    }
+  }, [])
+
   const authContext = React.useMemo(
     () => ({
       signIn: async (data: { address: string; password: string }) => {
@@ -115,8 +150,8 @@ export function App() {
     <AuthContext.Provider value={authContext}>
       <StatusBar barStyle="dark-content" />
       {/* {e(HomeScreen)} */}
-      {e(SearchResults)}
-      {/* {e(DestinationSearch)} */}
+      {/* {e(SearchResults)} */}
+      {e(DestinationSearch)}
     </AuthContext.Provider>
   )
 }

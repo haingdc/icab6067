@@ -13,6 +13,7 @@
   },
   "dependencies": {
     "@react-native-async-storage/async-storage": "^1.14.1",
+    "@react-native-community/geolocation": "2.0.2",
     "@userfront/react": "^0.1.23",
     "react-native-google-places-autocomplete": "^2.2.0",
     "react-native-maps": "0.27.1",

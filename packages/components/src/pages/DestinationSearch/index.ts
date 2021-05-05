@@ -72,8 +72,11 @@ export function DestinationSearch(props) {
           }),
 
           // Circle near Origin input
+          e(View, { key: 'circle', style: styles.circle }),
           // Line between dots
+          e(View, { key: 'line', style: styles.line }),
           // Square near Destination input
+          e(View, { key: 'square', style: styles.square }),
         ]
       )
     )

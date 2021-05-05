@@ -44,6 +44,31 @@ const styles = StyleSheet.create({
     position: 'absolute',
     top: 105,
   },
+  circle: {
+    width: 5,
+    height: 5,
+    backgroundColor: 'black',
+    position: 'absolute',
+    borderRadius: 15,
+    top: 20,
+    left: 10,
+  },
+  line: {
+    width: 1,
+    height: 50,
+    backgroundColor: '#919191',
+    position: 'absolute',
+    top: 28,
+    left: 11.5,
+  },
+  square: {
+    width: 5,
+    height: 5,
+    backgroundColor: 'black',
+    position: 'absolute',
+    top: 80,
+    left: 10,
+  },
 })
 
 export default styles
