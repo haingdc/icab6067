@@ -2,7 +2,7 @@ import { Dimensions, View } from 'react-native'
 import { CovidMessage } from '../../components/CovidMessage'
 import { HomeSearch } from '../../components/HomeSearch'
 import { e } from '../../utils/react-helpers'
-import { HomeMap } from '../HomeMap'
+import { HomeMap } from '../../components/HomeMap'
 
 export function HomeScreen(props) {
   return (

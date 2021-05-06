@@ -42,6 +42,7 @@ module.exports = {
     '@typescript-eslint/no-use-before-define': 'off',
     '@typescript-eslint/explicit-module-boundary-types': 'off',
     '@typescript-eslint/no-var-requires': 0,
+    '@typescript-eslint/dot-notation': 0,
     'import/no-dynamic-require': 0,
   },
 }
