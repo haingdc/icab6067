@@ -1,26 +1,37 @@
-import { View, Text }          from 'react-native'
-import AntDesign               from 'react-native-vector-icons/AntDesign'
-import MaterialIcons           from 'react-native-vector-icons/MaterialIcons'
-import Entypo                  from 'react-native-vector-icons/Entypo'
-import { e }                   from '../../utils/react-helpers'
-import styles                  from './styles'
+import { View, Text, Pressable }                            from 'react-native'
+import { useNavigation }                                    from '@react-navigation/native'
+import AntDesign                                            from 'react-native-vector-icons/AntDesign'
+import MaterialIcons                                        from 'react-native-vector-icons/MaterialIcons'
+import Entypo                                               from 'react-native-vector-icons/Entypo'
+import { e }                                                from '../../utils/react-helpers'
+import styles                                               from './styles'
 
 export function HomeSearch(props) {
+  const navigation = useNavigation()
+  function goToSearch() {
+    navigation.navigate('DestinationSearch')
+  }
   return (
     e(View, undefined,
       [
         /* Input Box */
-        e(View, { key: 'input box', style: styles.inputBox },
-          [
-            e(Text, { key: 'input text', style: styles.inputText }, 'Where To?'),
-            e(View, { key: 'time container', style: styles.timeContainer },
-              [
-                e(AntDesign    , { key: 'clock circle'       , name: 'clockcircle'        , size: 16, color: '#535353' }),
-                e(Text         , { key: 'text' }, 'Now'),
-                e(MaterialIcons, { key: 'keyboard arrow down', name: 'keyboard-arrow-down', size: 16 })
-              ]
-            )
-          ]
+        e(Pressable,
+          {
+            key: 'input box',
+            onPress: goToSearch
+          },
+          e(View, { style: styles.inputBox },
+            [
+              e(Text, { key: 'input text', style: styles.inputText }, 'Where To?'),
+              e(View, { key: 'time container', style: styles.timeContainer },
+                [
+                  e(AntDesign    , { key: 'clock circle'       , name: 'clockcircle'        , size: 16, color: '#535353' }),
+                  e(Text         , { key: 'text' }, 'Now'),
+                  e(MaterialIcons, { key: 'keyboard arrow down', name: 'keyboard-arrow-down', size: 16 })
+                ]
+              )
+            ]
+          ),
         ),
         /* Previous destination */
         e(View, { key: 'previous destination', style: styles.row },

@@ -1,9 +1,12 @@
-import { View, Dimensions } from 'react-native'
-import { RouteMap } from '../../components/RouteMap'
-import { UberTypes } from '../../components/UberTypes'
-import { e } from '../../utils/react-helpers'
+import { View , Dimensions }                                            from 'react-native'
+import { useRoute }                                                     from '@react-navigation/native'
+import { RouteMap }                                                     from '../../components/RouteMap'
+import { UberTypes }                                                    from '../../components/UberTypes'
+import { e }                                                            from '../../utils/react-helpers'
 
 export function SearchResults(props) {
+  const route = useRoute()
+  console.log({ route })
   return (
     e(View, undefined,
       [
