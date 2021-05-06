@@ -1,9 +1,8 @@
 import { Image, FlatList }                                        from 'react-native'
 import MapView, { PROVIDER_GOOGLE }                               from 'react-native-maps'
 import { e }                                                      from '../../utils/react-helpers'
-import car                                                        from '../../../assets/images/top-UberX.png'
-import cars from '../../../assets/data/cars'
-import types from './types'
+import cars                                                       from '../../../assets/data/cars'
+import types                                                      from './types'
 
 const { Marker } = (MapView as any)
 
@@ -12,6 +11,7 @@ export function HomeMap(props) {
     e(
       MapView,
       {
+        showsUserLocation: true,
         style: { width: '100%', height: '100%' },
         provider: PROVIDER_GOOGLE,
         initialRegion: {

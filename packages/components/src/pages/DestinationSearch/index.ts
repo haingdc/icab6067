@@ -5,6 +5,15 @@ import { e }                                                                  fr
 import { PlaceRow } from './PlaceRow';
 import styles                                                                 from './styles'
 
+const homePlace = {
+  description: 'Home',
+  geometry: { location: { lat: 10.79179, lng: 106.69485 } },
+};
+const workPlace = {
+  description: 'Work',
+  geometry: { location: { lat: 48.8496818, lng: 2.2940881 } },
+};
+
 export function DestinationSearch(props) {
   const [originPlace     , setOriginPlace     ] = React.useState<any>(undefined)
   const [destinationPlace, setDestinationPlace] = React.useState<any>(undefined)
@@ -20,6 +29,7 @@ export function DestinationSearch(props) {
           e(GooglePlacesAutocomplete, {
             key: 'autocomplete 1',
             placeholder: 'Where from?',
+            predefinedPlaces: [homePlace, workPlace],
             onPress(data, details = null) {
               setOriginPlace({data, details})
               console.log(data, details)
@@ -32,11 +42,18 @@ export function DestinationSearch(props) {
               useOnPlatform: 'web', // or "all"
               url: 'http://localhost:8080/maps/api',
             },
-            fetchDetails             : true ,
-            suppressDefaultStyles    : true ,
+            fetchDetails             : true,
+            suppressDefaultStyles    : true,
             enablePoweredByContainer : false,
-            renderRow: (data) =>
-              e(PlaceRow, { text: data.description }),
+            currentLocation          : true,
+            currentLocationLabel     : 'Current location',
+            renderRow: (data) => {
+              const text = data.description || data['vicinity']
+              const ico  = text == 'Home' ? 'home' :'location-pin'
+              return e(PlaceRow, { text, ico })
+            },
+            renderDescription: (data) =>
+              data.description || data['vicinity'],
             styles: {
               textInput: styles.textInput,
               container: styles.autocompleteContainer,

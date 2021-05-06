@@ -22,6 +22,11 @@ import { DestinationSearch } from './pages/DestinationSearch';
 import { e } from './utils/react-helpers';
 import { SearchResults } from './pages/SearchResults';
 import { HomeScreen } from './pages/HomeScreen';
+import RootNavigator from './navigation/root';
+
+if (Platform.OS !== 'web') {
+  (navigator as any).geolocation = require('@react-native-community/geolocation');
+}
 
 export function App() {
   const androidPermission = async () => {
@@ -111,8 +116,14 @@ export function App() {
   React.useEffect(() => {
     if (Platform.OS == 'android') {
       androidPermission()
-    } else if (Platform.OS == 'ios') {
+    }
+    if (Platform.OS == 'ios') {
       Geolocation.requestAuthorization()
+    }
+    if(Platform.OS == 'web') {
+      navigator.geolocation.getCurrentPosition(() => {
+        console.log('accept get location')
+      })
     }
   }, [])
 
@@ -149,9 +160,10 @@ export function App() {
   return (
     <AuthContext.Provider value={authContext}>
       <StatusBar barStyle="dark-content" />
+      {e(RootNavigator)}
       {/* {e(HomeScreen)} */}
       {/* {e(SearchResults)} */}
-      {e(DestinationSearch)}
+      {/* {e(DestinationSearch)} */}
     </AuthContext.Provider>
   )
 }

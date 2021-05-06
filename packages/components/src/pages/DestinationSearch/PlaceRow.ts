@@ -3,16 +3,15 @@ import Entypo                                   from 'react-native-vector-icons/
 import styles                                   from './styles'
 import { e }                                    from '../../utils/react-helpers'
 
-export function PlaceRow(props) {
-  console.log( { props })
-  const { text } = props
+export function PlaceRow(props: { text: string, ico?: string }) {
+  const { text, ico = 'location-pin' } = props
   return (
     e(View, { style: styles.row },
       e(View, { style: styles.iconContainer },
         e(
           Entypo,
           {
-            name: 'location-pin',
+            name: ico,
             size: 20,
             color: 'white',
           }
