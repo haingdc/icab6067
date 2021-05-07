@@ -6,13 +6,14 @@ import { e }                                                      from '../../ut
 const { Marker } = (MapView as any)
 
 export function RouteMap(props) {
-  const origin = {
-    latitude: 28.450627,
-    longitude: -16.263045,
+  const { origin, destination } = props
+  const originLocation = {
+    latitude: origin.details.geometry.location.lat,
+    longitude: origin.details.geometry.location.lng,
   }
-  const destination = {
-    latitude: 28.460127,
-    longitude: -16.269045,
+  const destinationLocation = {
+    latitude: destination.details.geometry.location.lat,
+    longitude: destination.details.geometry.location.lln,
   }
   return (
     e(
@@ -21,10 +22,10 @@ export function RouteMap(props) {
         style: { width: '100%', height: '100%' },
         provider: PROVIDER_GOOGLE,
         initialRegion: {
-          latitude: 28.450627,
-          longitude: -16.263045,
-          latitudeDelta: 0.0222,
-          longitudeDelta: 0.0121,
+          latitude: 16.47135,
+          longitude: 107.57941,
+          latitudeDelta: 0.0122,
+          longitudeDelta: 0.0101,
         },
       },
       [
@@ -32,8 +33,8 @@ export function RouteMap(props) {
           MapViewDirections,
           {
             key: 'directions',
-            origin,
-            destination,
+            origin: originLocation,
+            destination: destinationLocation,
             strokeWidth: 5,
             strokeColor: 'black',
             apikey: 'AIzaSyA_lsmHKQ5FTBzSHFlJXWqqSQxHfuvM8Lc',
@@ -43,7 +44,7 @@ export function RouteMap(props) {
           Marker,
           {
             key: 'origin',
-            coordinate: origin,
+            coordinate: originLocation,
             title: 'Origin',
           }
         ),
@@ -51,7 +52,7 @@ export function RouteMap(props) {
           Marker,
           {
             key: 'Destination',
-            coordinate: destination,
+            coordinate: destinationLocation,
             title: 'Destination',
           }
         ),

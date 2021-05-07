@@ -1,26 +1,44 @@
+import { View, Text }                                    from 'react-native'
 import { NavigationContainer }                           from '@react-navigation/native'
-import { createStackNavigator }                          from '@react-navigation/stack'
-import { DestinationSearch } from '../pages/DestinationSearch'
-import { HomeScreen }                                    from '../pages/HomeScreen'
-import { SearchResults } from '../pages/SearchResults'
+import { createDrawerNavigator }                         from '@react-navigation/drawer'
 import { e }                                             from '../utils/react-helpers'
+import HomeNavigator                                     from './home'
+import { CustomDrawer } from './CustomDrawer'
 
-const Stack = createStackNavigator()
+const Drawer = createDrawerNavigator()
+
+const DummyScreen = props => e(
+  View,
+  {
+    style: {
+      flex: 1,
+      justifyContent: 'center',
+      alignItems: 'center',
+    },
+  },
+  e(Text, undefined, props.name)
+)
 
 export default function RootNavigator() {
   return (
     e(NavigationContainer, undefined,
-      e(
-        Stack.Navigator,
+      e(Drawer.Navigator,
         {
-          screenOptions: {
-            headerShown: false,
+          drawerContent: (props) => {
+            return e(CustomDrawer, { ... props })
           },
         } as any,
         [
-          e(Stack.Screen, { key: 'home'              , name: 'Home'             , component: HomeScreen        }),
-          e(Stack.Screen, { key: 'destination search', name: 'DestinationSearch', component: DestinationSearch }),
-          e(Stack.Screen, { key: 'search results'    , name: 'SearchResults'    , component: SearchResults     }),
+          e(Drawer.Screen, { key: 'Home', name: 'Home', component: HomeNavigator }),
+          e(Drawer.Screen, { key: 'Help', name: 'Help' } as any,
+            () => e(DummyScreen, { name: 'Help' })
+          ),
+          e(Drawer.Screen, { key: 'Wallet', name: 'Wallet' } as any,
+            () => e(DummyScreen, { name: 'Wallet' })
+          ),
+          e(Drawer.Screen, { key: 'Settings', name: 'Settings' } as any,
+            () => e(DummyScreen, { name: 'Settings' })
+          ),
         ]
       )
     )

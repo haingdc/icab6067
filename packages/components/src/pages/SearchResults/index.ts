@@ -6,13 +6,13 @@ import { e }                                                            from '..
 
 export function SearchResults(props) {
   const route = useRoute()
-  console.log({ route })
+  const { originPlace , destinationPlace } = route.params as any
   return (
     e(View, undefined,
       [
         e(View, { key: 'homemap container', style: { display: 'flex', justifyContent: 'space-between' } },
           e(View, { style: { height: Dimensions.get('window').height - 400 } },
-            e(RouteMap  , { key: 'homemap' }),
+            e(RouteMap  , { key: 'homemap', origin: originPlace, destination: destinationPlace }),
           )
         ),
         e(View, { key: 'uber types container', style: { height: 400 } },
